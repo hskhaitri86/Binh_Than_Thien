@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bình Thân Thiện - Hành Trình Thức Tỉnh & Lan Tỏa Văn Hóa Đọc</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#060a17',
+                            900: '#0a1128',
+                            800: '#101f42',
+                            700: '#1a2e5a',
+                            600: '#284177'
+                        },
+                        gold: {
+                            warm: '#d4af37',
+                            champagne: '#f3e5ab',
+                            muted: '#c5a059',
+                            dark: '#9a7b2c'
+                        },
+                        cream: {
+                            50: '#fdfbf7',
+                            100: '#f5f2eb',
+                            200: '#e8e2d5'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        handwriting: ['"Dancing Script"', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Fixed Fullscreen Background Image with Dark & Blur Overlay */
+        .bg-fixed-portrait {
+            background-image: url('1788660145794_5538847953396630610_5538847953396630610_754b9aae3a264135a9cee64aac6ddd9b_2.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(10, 17, 40, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            box-shadow: 0 10px 36px 0 rgba(0, 0, 0, 0.6);
+        }
+
+        .glass-card-light {
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+        }
+
+        /* Gold Gradient Elements */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060a17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+
+        .testimonial-card {
+            transition: all 0.4s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212, 175, 55, 0.8);
+            box-shadow: 0 15px 45px rgba(212, 175, 55, 0.22);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-navy-950 text-gray-100 selection:bg-gold-warm selection:text-navy-950 bg-fixed-portrait relative" id="bodyBg">
+
+    <!-- Fixed Dark Overlay for Solemnity and Readability -->
+    <div class="fixed inset-0 bg-gradient-to-b from-navy-950/92 via-navy-900/88 to-navy-950/96 pointer-events-none z-0"></div>
+
+    <div class="relative z-10">
+
+        <!-- Header Navigation -->
+        <header class="sticky top-0 z-50 bg-navy-950/85 backdrop-blur-md border-b border-gold-warm/20 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="relative w-11 h-11 rounded-full p-0.5 bg-gradient-to-tr from-gold-champagne via-gold-warm to-gold-dark shadow-lg group-hover:scale-105 transition-transform">
+                        <img id="headerAvatar" src="1788660145794_5538847953396630610_5538847953396630610_754b9aae3a264135a9cee64aac6ddd9b_2.jpg" 
+                             alt="Bình Thân Thiện Avatar" 
+                             class="w-full h-full object-cover rounded-full"
+                             onerror="this.src='https://placehold.co/150x150/0a1128/d4af37?text=Peace'">
+                    </div>
+                    <div>
+                        <span class="font-cinzel font-bold text-base sm:text-lg text-gold-champagne tracking-wider block">BÌNH THÂN THIỆN</span>
+                        <span class="text-[10px] text-gold-muted uppercase tracking-[0.2em] font-medium block">#PeaceNguyen</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-widest font-semibold">
+                    <a href="#bi-mat" class="text-gray-300 hover:text-gold-champagne transition-colors">Bí Mật Nụ Cười</a>
+                    <a href="#hanh-trinh" class="text-gray-300 hover:text-gold-champagne transition-colors">Chương Sự Thật</a>
+                    <a href="#cam-nhan" class="text-gold-champagne hover:text-white transition-colors">Cảm Nhận Độc Giả</a>
+                    <a href="#su-menh" class="text-gray-300 hover:text-gold-champagne transition-colors">Sứ Mệnh Tri Thức</a>
+                    <!-- Image Uploader Button -->
+                    <button onclick="document.getElementById('imageUploadInput').click()" class="px-4 py-2 rounded-full border border-gold-warm/60 text-gold-champagne hover:bg-gold-warm/20 transition-all text-[11px] flex items-center gap-2">
+                        <i class="fa-solid fa-camera-rotate"></i>
+                        <span>Đổi Ảnh Nền & Avatar</span>
+                    </button>
+                    <input type="file" id="imageUploadInput" accept="image/*" class="hidden">
+                    <a href="#giao-luu" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-gold-warm to-gold-dark text-navy-950 font-bold hover:brightness-110 transition-all duration-300 shadow-md">
+                        Giao Lưu Độc Giả
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center gap-3 md:hidden">
+                    <button onclick="document.getElementById('imageUploadInput').click()" class="p-2 text-gold-champagne border border-gold-warm/40 rounded-full text-xs">
+                        <i class="fa-solid fa-camera-rotate"></i>
+                    </button>
+                    <button id="mobileMenuBtn" class="text-gold-champagne p-2 focus:outline-none" aria-label="Toggle Navigation">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden bg-navy-950/95 border-b border-gold-warm/20 px-6 py-6 space-y-4">
+                <a href="#bi-mat" class="block text-gray-300 hover:text-gold-champagne font-medium">Bí Mật Nụ Cười</a>
+                <a href="#hanh-trinh" class="block text-gray-300 hover:text-gold-champagne font-medium">Chương Sự Thật</a>
+                <a href="#cam-nhan" class="block text-gold-champagne hover:text-white font-medium">Cảm Nhận Độc Giả</a>
+                <a href="#su-menh" class="block text-gray-300 hover:text-gold-champagne font-medium">Sứ Mệnh Tri Thức</a>
+                <a href="#giao-luu" class="block text-center py-3 rounded-full bg-gold-warm text-navy-950 font-bold tracking-wider uppercase text-xs">Giao Lưu Độc Giả</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section id="bi-mat" class="py-20 lg:py-28 relative overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        
+                        <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                            <div class="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full bg-navy-800/80 border border-gold-warm/40 text-gold-champagne text-xs uppercase tracking-widest shadow-lg">
+                                <span class="w-2 h-2 rounded-full bg-gold-warm animate-ping"></span>
+                                <span>Hành Trình Thức Tỉnh & Lan Tỏa Văn Hóa Đọc</span>
+                            </div>
+
+                            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight">
+                                Từ người phụ nữ nhút nhát, sợ đám đông đến <span class="gold-gradient-text italic">Sứ Giả Văn Hóa Đọc</span> 📖✨
+                            </h1>
+
+                            <p class="text-gray-300 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                                Gắn bó với <strong class="text-gold-champagne">Nhà xuất bản Chính trị quốc gia Sự thật</strong> và quản lý <strong class="text-gold-champagne">Nhà sách Quang Trung Hà Nội(Phố sách Hà Nội)</strong>, Bình Thân Thiện nay đã sẵn sàng mở rộng vòng tay, lắng nghe và giao lưu cùng mọi độc giả gần xa.
+                            </p>
+
+                            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                                <a href="#hanh-trinh" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-gold-warm to-gold-dark text-navy-950 font-bold rounded-full shadow-lg hover:brightness-110 transition-all duration-300 flex items-center justify-center gap-3 tracking-wider uppercase text-xs">
+                                    <span>Khám Phá Hành Trình</span>
+                                    <i class="fa-solid fa-key"></i>
+                                </a>
+                                <a href="#giao-luu" class="w-full sm:w-auto px-8 py-4 rounded-full border border-gold-warm/50 text-gold-champagne hover:bg-gold-warm/20 transition-all duration-300 text-center text-xs font-semibold tracking-wider uppercase">
+                                    Giao Lưu Ngay 💌
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Profile Avatar & Background Preview Display -->
+                        <div class="lg:col-span-5 relative">
+                            <div class="relative mx-auto max-w-md lg:max-w-none">
+                                <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-gold-warm via-gold-champagne to-gold-dark opacity-40 blur-md"></div>
+                                
+                                <div class="relative rounded-3xl overflow-hidden glass-card p-3 shadow-2xl">
+                                    <img id="mainHeroImage" src="1788660145794_5538847953396630610_5538847953396630610_754b9aae3a264135a9cee64aac6ddd9b_2.jpg" 
+                                         alt="Bình Thân Thiện tại Phố sách Hà Nội" 
+                                         class="w-full h-auto object-cover rounded-2xl filter brightness-95 hover:brightness-105 transition-all duration-500"
+                                         onerror="this.src='https://placehold.co/600x800/0a1128/d4af37?text=Peace+Nguyen'">
+                                    
+                                    <div class="p-4 text-center space-y-1">
+                                        <p class="font-serif italic text-gold-champagne text-sm">"Nhà sách Quang Trung Hà Nội • Phố Sách Hà Nội"</p>
+                                        <p class="text-[11px] text-gray-400 uppercase tracking-widest font-sans">#PeaceNguyen #BinhThanThien</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Chapters Section -->
+            <section id="hanh-trinh" class="py-20 lg:py-28 relative">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center space-y-3 mb-16">
+                        <span class="text-gold-warm font-cinzel font-bold text-xs uppercase tracking-[0.25em]">Hành Trình Truyền Cảm Hứng</span>
+                        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">
+                            Các Chương Khám Phá Sự Thật 📜✨
+                        </h2>
+                        <p class="text-gray-300 font-light text-sm sm:text-base max-w-lg mx-auto">
+                            Nhấp vào từng chương để mở rộng câu chuyện chạm tới trái tim người đọc.
+                        </p>
+                        <div class="w-12 h-0.5 bg-gold-warm mx-auto"></div>
+                    </div>
+
+                    <!-- Chapters Accordion -->
+                    <div class="space-y-6" id="chaptersContainer">
+                        
+                        <!-- Chapter 1 -->
+                        <div class="chapter-card glass-card rounded-2xl overflow-hidden transition-all duration-300">
+                            <button class="chapter-btn w-full p-6 sm:p-8 text-left flex items-center justify-between focus:outline-none hover:bg-white/5 transition-colors" data-target="chap1">
+                                <div class="flex items-center space-x-4">
+                                    <span class="w-10 h-10 rounded-full bg-gold-warm text-navy-950 flex items-center justify-center font-cinzel font-bold text-sm shrink-0">I</span>
+                                    <div>
+                                        <span class="text-xs text-gold-muted uppercase tracking-widest font-semibold block">Chương 1</span>
+                                        <h3 class="font-serif font-bold text-lg sm:text-xl text-gold-champagne">Nỗi Sợ Mang Tên "Đám Đông" & Đêm Trăn Trở 🖤</h3>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-gold-warm chapter-icon transition-transform duration-300"></i>
+                            </button>
+                            
+                            <div id="chap1" class="chapter-content hidden px-6 sm:px-8 pb-8 pt-2 border-t border-gold-warm/20 font-serif text-gray-200 leading-relaxed space-y-4">
+                                <p>Đã có những năm tháng, Bình là một người phụ nữ cực kỳ nhút nhát. Mỗi lần bước ra giao tiếp giữa đám đông, tim đập loạn nhịp, đôi chân run rẩy và chỉ muốn thu mình vào góc nhỏ an toàn.</p>
+                                <div class="p-4 rounded-xl bg-navy-950/80 border-l-4 border-gold-warm text-gold-champagne font-sans text-sm space-y-2">
+                                    <p>- "Liệu một người khép kín như mình có bao giờ dám cất lên tiếng nói chia sẻ với đời?"</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chapter 2 -->
+                        <div class="chapter-card glass-card rounded-2xl overflow-hidden transition-all duration-300">
+                            <button class="chapter-btn w-full p-6 sm:p-8 text-left flex items-center justify-between focus:outline-none hover:bg-white/5 transition-colors" data-target="chap2">
+                                <div class="flex items-center space-x-4">
+                                    <span class="w-10 h-10 rounded-full bg-gold-warm text-navy-950 flex items-center justify-center font-cinzel font-bold text-sm shrink-0">II</span>
+                                    <div>
+                                        <span class="text-xs text-gold-muted uppercase tracking-widest font-semibold block">Chương 2</span>
+                                        <h3 class="font-serif font-bold text-lg sm:text-xl text-gold-champagne">Ánh Sáng Tri Thức Tại Nhà Sách Quang Trung Hà Nội 📚🕯️</h3>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-gold-warm chapter-icon transition-transform duration-300"></i>
+                            </button>
+                            
+                            <div id="chap2" class="chapter-content hidden px-6 sm:px-8 pb-8 pt-2 border-t border-gold-warm/20 font-serif text-gray-200 leading-relaxed space-y-4">
+                                <p>Bước ngoặt đến khi gắn bó với <strong class="text-gold-champagne">Nhà xuất bản Chính trị quốc gia Sự thật</strong> và làm việc tại <strong class="text-gold-champagne">Nhà sách Quang Trung Hà Nội (Phố sách Hà Nội)</strong>. Sách không chỉ là trang giấy, mà là người bạn lớn kiên nhẫn gỡ bỏ từng lớp vỏ bọc rụt rè.</p>
+                            </div>
+                        </div>
+
+                        <!-- Chapter 3 -->
+                        <div class="chapter-card glass-card rounded-2xl overflow-hidden transition-all duration-300">
+                            <button class="chapter-btn w-full p-6 sm:p-8 text-left flex items-center justify-between focus:outline-none hover:bg-white/5 transition-colors" data-target="chap3">
+                                <div class="flex items-center space-x-4">
+                                    <span class="w-10 h-10 rounded-full bg-gold-warm text-navy-950 flex items-center justify-center font-cinzel font-bold text-sm shrink-0">III</span>
+                                    <div>
+                                        <span class="text-xs text-gold-muted uppercase tracking-widest font-semibold block">Chương 3</span>
+                                        <h3 class="font-serif font-bold text-lg sm:text-xl text-gold-champagne">Sứ Giả Văn Hóa Đọc & Sẵn Sàng Giao Lưu 🌺🌈</h3>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-gold-warm chapter-icon transition-transform duration-300"></i>
+                            </button>
+                            
+                            <div id="chap3" class="chapter-content hidden px-6 sm:px-8 pb-8 pt-2 border-t border-gold-warm/20 font-serif text-gray-200 leading-relaxed space-y-4">
+                                <p>Từ sự rụt rè ban đầu, Bình đã lột xác thành người lan tỏa văn hóa đọc tràn đầy nhiệt huyết. Hôm nay, tại không gian phố sách rực rỡ sắc màu, nụ cười thân thiện luôn nở trên môi để chào đón mọi độc giả ghé thăm.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: 6 CẢM NHẬN TỪ ĐỘC GIẢ -->
+            <section id="cam-nhan" class="py-20 lg:py-28 relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center space-y-3 mb-16">
+                        <span class="text-gold-warm font-cinzel font-bold text-xs uppercase tracking-[0.25em]">Tri Ân & Kết Nối</span>
+                        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">
+                            Cảm Nhận Từ Độc Giả 💕✨
+                        </h2>
+                        <p class="text-gray-300 font-light text-sm sm:text-base max-w-xl mx-auto">
+                            Những dòng tâm sự lắng đọng từ bạn đọc và đồng nghiệp cùng chị Bình Thân Thiện.
+                        </p>
+                        <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-gold-warm to-transparent mx-auto"></div>
+                    </div>
+
+                    <!-- 6 Testimonial Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="testimonialsGrid">
+                        
+                        <!-- Review 1 -->
+                        <div class="testimonial-card glass-card p-8 rounded-3xl relative flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex text-gold-warm text-xs space-x-1">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <i class="fa-solid fa-quote-right text-3xl text-gold-warm/20"></i>
+                                </div>
+                                <p class="text-gray-200 font-serif text-sm leading-relaxed italic">
+                                    "Lần đầu ghé Nhà sách Quang Trung Hà Nội, mình còn ngập ngừng chưa biết chọn sách gì. Chị Bình đón tiếp với nụ cười thân thiện, dịu dàng hướng dẫn từng cuốn của NXB Chính trị quốc gia Sự thật. Phố sách Hà Nội từ đó trở thành góc bình yên của mình."
+                                </p>
+                            </div>
+                            <div class="pt-6 mt-6 border-t border-gold-warm/20 flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-gold-warm/20 border border-gold-warm/40 text-gold-champagne font-bold flex items-center justify-center font-serif text-base shrink-0">
+                                    MA
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gold-champagne text-sm">Chị Minh Anh</h4>
+                                    <span class="text-[11px] text-gray-400 block font-light">Bạn đọc • Nhà sách Quang Trung Hà Nội</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="testimonial-card glass-card p-8 rounded-3xl relative flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex text-gold-warm text-xs space-x-1">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <i class="fa-solid fa-quote-right text-3xl text-gold-warm/20"></i>
+                                </div>
+                                <p class="text-gray-200 font-serif text-sm leading-relaxed italic">
+                                    "Chứng kiến chị Bình từ một người e ấp lột xác thành sứ giả văn hóa đọc tràn đầy năng lượng là điều vô cùng xúc động. Tình yêu sách ở chị truyền cảm hứng mạnh mẽ cho tập thể biên tập viên chúng tôi."
+                                </p>
+                            </div>
+                            <div class="pt-6 mt-6 border-t border-gold-warm/20 flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-gold-warm/20 border border-gold-warm/40 text-gold-champagne font-bold flex items-center justify-center font-serif text-base shrink-0">
+                                    TH
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gold-champagne text-sm">Anh Trần Hoàng</h4>
+                                    <span class="text-[11px] text-gray-400 block font-light">Đồng nghiệp • Ngành Xuất bản</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="testimonial-card glass-card p-8 rounded-3xl relative flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex text-gold-warm text-xs space-x-1">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <i class="fa-solid fa-quote-right text-3xl text-gold-warm/20"></i>
+                                </div>
+                                <p class="text-gray-200 font-serif text-sm leading-relaxed italic">
+                                    "Giọng nói mộc mạc và chân thật của chị Bình trong các video chia sẻ sách thực sự chạm đến trái tim. Nhờ chị mà mình đã xây dựng được thói quen đọc sách mỗi tối."
+                                </p>
+                            </div>
+                            <div class="pt-6 mt-6 border-t border-gold-warm/20 flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-gold-warm/20 border border-gold-warm/40 text-gold-champagne font-bold flex items-center justify-center font-serif text-base shrink-0">
+                                    ĐN
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gold-champagne text-sm">Đức Nam</h4>
+                                    <span class="text-[11px] text-gray-400 block font-light">Độc giả trực tuyến</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 4 -->
+                        <div class="testimonial-card glass-card p-8 rounded-3xl relative flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex text-gold-warm text-xs space-x-1">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <i class="fa-solid fa-quote-right text-3xl text-gold-warm/20"></i>
+                                </div>
+                                <p class="text-gray-200 font-serif text-sm leading-relaxed italic">
+                                    "Em cũng là một người cực kỳ sợ nói trước đám đông. Khi biết câu chuyện vượt qua nỗi sợ của cô Bình, em như tìm thấy ánh sáng hy vọng để tự tin bước ra thế giới."
+                                </p>
+                            </div>
+                            <div class="pt-6 mt-6 border-t border-gold-warm/20 flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-gold-warm/20 border border-gold-warm/40 text-gold-champagne font-bold flex items-center justify-center font-serif text-base shrink-0">
+                                    NT
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gold-champagne text-sm">Nguyễn Thu Phương</h4>
+                                    <span class="text-[11px] text-gray-400 block font-light">Sinh viên Đại học Hà Nội</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 5 -->
+                        <div class="testimonial-card glass-card p-8 rounded-3xl relative flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex text-gold-warm text-xs space-x-1">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <i class="fa-solid fa-quote-right text-3xl text-gold-warm/20"></i>
+                                </div>
+                                <p class="text-gray-200 font-serif text-sm leading-relaxed italic">
+                                    "Chị Bình Thân Thiện mang tinh thần phụng sự tuyệt vời. Chị luôn khuyến khích cộng đồng không ngừng học tập, làm mới tư duy thông qua những đầu sách chính thống giá trị."
+                                </p>
+                            </div>
+                            <div class="pt-6 mt-6 border-t border-gold-warm/20 flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-gold-warm/20 border border-gold-warm/40 text-gold-champagne font-bold flex items-center justify-center font-serif text-base shrink-0">
+                                    QK
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gold-champagne text-sm">Doanh nhân Quốc Khánh</h4>
+                                    <span class="text-[11px] text-gray-400 block font-light">Thành viên Cộng đồng Doanh nhân</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 6 -->
+                        <div class="testimonial-card glass-card p-8 rounded-3xl relative flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex text-gold-warm text-xs space-x-1">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <i class="fa-solid fa-quote-right text-3xl text-gold-warm/20"></i>
+                                </div>
+                                <p class="text-gray-200 font-serif text-sm leading-relaxed italic">
+                                    "Bức ảnh cô Bình đứng dịu dàng bên những mô hình sách màu sắc tại Phố sách thực sự rất đẹp và truyền cảm hứng. Chúc cô luôn giữ vững ngọn lửa nhiệt huyết!"
+                                </p>
+                            </div>
+                            <div class="pt-6 mt-6 border-t border-gold-warm/20 flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-gold-warm/20 border border-gold-warm/40 text-gold-champagne font-bold flex items-center justify-center font-serif text-base shrink-0">
+                                    YL
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gold-champagne text-sm">Yến Linh</h4>
+                                    <span class="text-[11px] text-gray-400 block font-light">Cộng đồng Yêu Sách</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Mission Pillars -->
+            <section id="su-menh" class="py-20 relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="text-center space-y-3 mb-16">
+                        <span class="text-gold-warm font-cinzel text-xs uppercase tracking-[0.2em]">Giá Trị Đồng Hành</span>
+                        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white">Điểm Tựa Tri Thức ✨</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="glass-card p-8 rounded-2xl hover:border-gold-warm/60 transition-all duration-300 space-y-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-warm/20 text-gold-champagne flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-book-bookmark"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-lg text-gold-champagne">Nhà Sách 24 Quang Trung</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed font-light">
+                                Điểm hẹn văn hóa đọc thân thương giữa lòng Phố sách Hà Nội, nơi mỗi cuốn sách mở ra một chân trời mới.
+                            </p>
+                        </div>
+
+                        <div class="glass-card p-8 rounded-2xl hover:border-gold-warm/60 transition-all duration-300 space-y-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-warm/20 text-gold-champagne flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-lg text-gold-champagne">NXB Chính Trị Quốc Gia Sự Thật</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed font-light">
+                                Cội nguồn của những trang sách giá trị, bồi đắp tư tưởng và nuôi dưỡng tâm hồn qua nhiều thế hệ.
+                            </p>
+                        </div>
+
+                        <div class="glass-card p-8 rounded-2xl hover:border-gold-warm/60 transition-all duration-300 space-y-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-warm/20 text-gold-champagne flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-lg text-gold-champagne">Sẵn Sàng Sẻ Chia</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed font-light">
+                                Luôn mở rộng vòng tay lắng nghe, trao đổi kinh nghiệm đọc và lan tỏa nguồn năng lượng tích cực.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Interaction & Guestbook Section -->
+            <section id="giao-luu" class="py-20 lg:py-28 relative">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="glass-card-light p-8 sm:p-12 rounded-3xl shadow-2xl relative text-navy-950">
+                        
+                        <div class="text-center space-y-3 mb-10">
+                            <div class="inline-flex p-3 rounded-full bg-navy-950 text-gold-champagne mb-1">
+                                <i class="fa-solid fa-comments text-xl"></i>
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-navy-950">Góc Giao Lưu & Gửi Cảm Nhận 💌</h2>
+                            <p class="text-gray-700 text-xs sm:text-sm max-w-md mx-auto">
+                                Hãy để lại lời nhắn hoặc cảm nhận của bạn cho Bình. Từng suy nghĩ của bạn đều là động lực quý giá!
+                            </p>
+                        </div>
+
+                        <!-- Form -->
+                        <form id="messageForm" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="senderName" class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-2">Họ & Tên Bạn ✨</label>
+                                    <input type="text" id="senderName" required placeholder="Nhập tên của bạn..." 
+                                           class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-gold-dark focus:border-transparent outline-none transition-all text-sm bg-white/90">
+                                </div>
+                                <div>
+                                    <label for="senderContact" class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-2">Vai Trò / Liên hệ 📲</label>
+                                    <input type="text" id="senderContact" required placeholder="VD: Độc giả trẻ / Email..." 
+                                           class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-gold-dark focus:border-transparent outline-none transition-all text-sm bg-white/90">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="senderMessage" class="block text-xs font-bold uppercase tracking-wider text-navy-900 mb-2">Lời Cảm Nhận Hoặc Tâm Sự 📝</label>
+                                <textarea id="senderMessage" rows="4" required placeholder="Chia sẻ suy nghĩ hoặc cảm nhận của bạn về hành trình của chị Bình..." 
+                                          class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-gold-dark focus:border-transparent outline-none transition-all text-sm resize-none bg-white/90"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full sm:w-auto px-10 py-4 bg-navy-950 text-gold-champagne font-bold rounded-full hover:bg-gold-dark hover:text-white transition-all duration-300 tracking-wider uppercase text-xs shadow-lg flex items-center justify-center gap-2 mx-auto">
+                                <span>Gửi Cảm Nhận</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+
+                        <!-- Alert Box -->
+                        <div id="statusAlert" class="hidden mt-6 p-4 rounded-xl bg-navy-950 text-gold-champagne text-center font-medium text-sm">
+                            ✨ Cảm ơn bạn! Lời cảm nhận đã được gửi và hiển thị thành công! 💕
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-navy-950/90 text-gray-400 py-12 border-t border-gold-warm/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
+                    <div class="space-y-2">
+                        <span class="font-cinzel font-bold text-lg text-gold-champagne block">BÌNH THÂN THIỆN</span>
+                        <p class="text-xs text-gray-400 font-light max-w-xs mx-auto md:mx-0">
+                            Truyền cảm hứng văn hóa đọc • Nhà sách Quang Trung Hà Nội • NXB Chính trị quốc gia Sự thật.
+                        </p>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="flex justify-center space-x-6 text-xl text-gold-warm">
+                        <a href="#" class="hover:text-gold-champagne transition-colors p-2" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-gold-champagne transition-colors p-2" aria-label="Zalo"><i class="fa-solid fa-comment-dots"></i></a>
+                        <a href="#" class="hover:text-gold-champagne transition-colors p-2" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="hover:text-gold-champagne transition-colors p-2" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+
+                    <div class="text-xs space-y-2 md:text-right">
+                        <p>© 2026 Blog Bình Thân Thiện. Tất cả quyền được bảo lưu.</p>
+                        <p class="text-gold-warm font-bold tracking-widest">#PeaceNguyen #BinhThanThien</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Accordion Chapters
+        const chapterBtns = document.querySelectorAll('.chapter-btn');
+        document.getElementById('chap1').classList.remove('hidden');
+        document.querySelector('[data-target="chap1"] .chapter-icon').classList.add('rotate-180');
+
+        chapterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const content = document.getElementById(targetId);
+                const icon = btn.querySelector('.chapter-icon');
+
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
+            });
+        });
+
+        // Image Uploader & LocalStorage Persistence
+        const imageUploadInput = document.getElementById('imageUploadInput');
+        const headerAvatar = document.getElementById('headerAvatar');
+        const mainHeroImage = document.getElementById('mainHeroImage');
+        const bodyBg = document.getElementById('bodyBg');
+
+        // Check stored image if exists
+        const savedImage = localStorage.getItem('peace_nguyen_bg_avatar');
+        if (savedImage) {
+            headerAvatar.src = savedImage;
+            mainHeroImage.src = savedImage;
+            bodyBg.style.backgroundImage = `url('${savedImage}')`;
+        }
+
+        imageUploadInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const base64Url = event.target.result;
+                    headerAvatar.src = base64Url;
+                    mainHeroImage.src = base64Url;
+                    bodyBg.style.backgroundImage = `url('${base64Url}')`;
+                    try {
+                        localStorage.setItem('peace_nguyen_bg_avatar', base64Url);
+                    } catch(err) {
+                        console.log('Storage limit exceeded or unavailable');
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Guestbook & Dynamic Testimonial Addition
+        const messageForm = document.getElementById('messageForm');
+        const statusAlert = document.getElementById('statusAlert');
+        const testimonialsGrid = document.getElementById('testimonialsGrid');
+
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('senderName').value.trim();
+            const contact = document.getElementById('senderContact').value.trim();
+            const message = document.getElementById('senderMessage').value.trim();
+
+            if (name && message) {
+                const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'DG';
+
+                const card = document.createElement('div');
+                card.className = "testimonial-card glass-card p-8 rounded-3xl relative flex flex-col justify-between border-2 border-gold-warm/60 transform transition-all duration-500";
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-gold-warm text-xs space-x-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[10px] bg-gold-warm text-navy-950 font-bold px-2 py-0.5 rounded-full uppercase">Mới</span>
+                        </div>
+                        <p class="text-gray-200 font-serif text-sm leading-relaxed italic">
+                            "${sanitizeHtml(message)}"
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-gold-warm/20 flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-gold-warm text-navy-950 font-bold flex items-center justify-center font-serif text-base shrink-0">
+                            ${sanitizeHtml(initials)}
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gold-champagne text-sm">${sanitizeHtml(name)}</h4>
+                            <span class="text-[11px] text-gray-400 block font-light">${sanitizeHtml(contact || 'Độc giả')}</span>
+                        </div>
+                    </div>
+                `;
+
+                testimonialsGrid.prepend(card);
+
+                statusAlert.classList.remove('hidden');
+                messageForm.reset();
+
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                setTimeout(() => {
+                    statusAlert.classList.add('hidden');
+                }, 5000);
+            }
+        });
+
+        function sanitizeHtml(str) {
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+        }
+    </script>
+
+</body>
+</html>
